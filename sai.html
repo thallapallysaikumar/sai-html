@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+            font-size: 18px;
+        }
+        body {
+            margin: 4vh;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar {
+            width: 25%;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            padding: 15px;
+            height: 92vh;
+            box-shadow: 0px 0px 3px gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .fa-circle {
+            color: orangered;
+        }
+        .searchBar {
+            width: 100%;
+            background-color: #eee;
+            border-radius: 3px;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        input {
+            border: none;
+            outline: none;
+            background: none;
+        }
+        .glass:hover {
+            color: orangered;
+            cursor: pointer;
+        }
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fa-brands {
+            font-size: 25px;
+            margin: 0 10px;
+            color: #333;
+            cursor: pointer;
+        }
+        .fa-brands:hover {
+            color: orangered;
+        }
+        .data {
+            width: 73%;
+            border-radius: 3px;
+            height: 92vh;
+            overflow-y: auto;
+        }
+        .top {
+            height: 60px;
+            border-radius: 3px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+        }
+        .header {
+            height: 200px;
+            border-radius: 3px;
+            background-color: #333;
+            margin: 3vh 0px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header p {
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+        }
+        #root {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+        .box {
+            margin: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .img-box {
+            width: 100%;
+            height: 176px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .images {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .bottom {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 110px;
+        }
+        h2 {
+            font-size: 20px;
+            color: orangered;
+        }
+        button {
+            width: 100%;
+            position: relative;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 7px 25px;
+            cursor: pointer;
+            color: white;
+        }
+        button:hover {
+            background-color: orangered;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidehead">
+                <div class="dots">
+                    <i class="fa-solid fa-circle"></i>
+                    <i class="fa-solid fa-circle" style="color: #333;"></i>
+                    <i class="fa-solid fa-circle"></i>
+                </div>
+                <hr style="margin: 15px 0; border: 1px solid #eee">
+            </div>
+            <div class="sidebody" style="height: 69vh;">
+                <div class="searchBar">
+                    <input placeholder="Search..." id="searchBar" name="searchBar" type="text">
+                    <i class="fa-solid fa-magnifying-glass glass" id="btn"></i>
+                </div>
+            </div>
+            <div class="sidefoot">
+                <hr style="margin: 15px 0; border: 1px solid #eee">
+                <div class="social-icons">
+                    <i class="fa-brands fa-square-facebook"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-square-github"></i>
+                </div>
+            </div>
+
+        </div>
+        <div class="data">
+            <div class="top">
+                <p>+92318-5700008</p>
+                <p>ezlearnaxis@gmail.com</p>
+            </div>
+            <div class="header">
+                <p>BUY EVERYTHING ONLINE</p>
+            </div>
+            <div class="body">
+                <div id="root"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const product = [
+            {
+                id: 0,
+                image: 'image/gg-1.jpg',
+                title: 'Z Flip Foldable Mobile',
+                price: 120,
+            },
+            {
+                id: 1,
+                image: 'image/hh-2.jpg',
+                title: 'Air Pods Pro',
+                price: 60,
+            },
+            {
+                id: 2,
+                image: 'image/ee-3.jpg',
+                title: '250D DSLR Camera',
+                price: 230,
+            },
+            {
+                id: 3,
+                image: 'image/aa-1.jpg',
+                title: 'Headphones',
+                price: 100,
+            },
+            {
+                id: 4,
+                image: 'image/bb-1.jpg',
+                title: 'Audio Microphone',
+                price: 230,
+            },
+            {
+                id: 5,
+                image: 'image/cc-1.jpg',
+                title: 'Smart Watch',
+                price: 100,
+            },
+        ];
+
+        const categories = [...new Set(product.map((item) => { return item }))]
+
+        docume<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+            font-size: 18px;
+        }
+        body {
+            margin: 4vh;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar {
+            width: 25%;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            padding: 15px;
+            height: 92vh;
+            box-shadow: 0px 0px 3px gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .fa-circle {
+            color: orangered;
+        }
+        .searchBar {
+            width: 100%;
+            background-color: #eee;
+            border-radius: 3px;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        input {
+            border: none;
+            outline: none;
+            background: none;
+        }
+        .glass:hover {
+            color: orangered;
+            cursor: pointer;
+        }
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fa-brands {
+            font-size: 25px;
+            margin: 0 10px;
+            color: #333;
+            cursor: pointer;
+        }
+        .fa-brands:hover {
+            color: orangered;
+        }
+        .data {
+            width: 73%;
+            border-radius: 3px;
+            height: 92vh;
+            overflow-y: auto;
+        }
+        .top {
+            height: 60px;
+            border-radius: 3px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+        }
+        .header {
+            height: 200px;
+            border-radius: 3px;
+            background-color: #333;
+            margin: 3vh 0px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header p {
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+        }
+        #root {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+        .box {
+            margin: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .img-box {
+            width: 100%;
+            height: 176px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .images {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .bottom {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 110px;
+        }
+        h2 {
+            font-size: 20px;
+            color: orangered;
+        }
+        button {
+            width: 100%;
+            position: relative;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 7px 25px;
+            cursor: pointer;
+            color: white;
+        }
+        button:hover {
+            background-color: orangered;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidehead">
+                <div class="dots">
+                    <i class="fa-solid fa-circle"></i>
+                    <i class="fa-solid fa-circle" style="color: #333;"></i>
+                    <i class="fa-solid fa-circle"></i>
+                </div>
+                <hr style="margin: 15px 0; border: 1px solid #eee">
+            </div>
+            <div class="sidebody" style="height: 69vh;">
+                <div class="searchBar">
+                    <input placeholder="Search..." id="searchBar" name="searchBar" type="text">
+                    <i class="fa-solid fa-magnifying-glass glass" id="btn"></i>
+                </div>
+            </div>
+            <div class="sidefoot">
+                <hr style="margin: 15px 0; border: 1px solid #eee">
+                <div class="social-icons">
+                    <i class="fa-brands fa-square-facebook"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-square-github"></i>
+                </div>
+            </div>
+
+        </div>
+        <div class="data">
+            <div class="top">
+                <p>+918019134045</p>
+                <p>saikumarthallapally6@gmail.com</p>
+            </div>
+            <div class="header">
+                <p>BUY EVERYTHING ONLINE</p>
+            </div>
+            <div class="body">
+                <div id="root"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const product = [
+            {
+                id: 0,
+                image: 'https://sm.ign.com/ign_ap/screenshot/default/img-3234_h488.jpg',
+                title: 'Z Flip Foldable Mobile',
+                price: 120,
+            },
+            {
+                id: 1,
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS--62dySImrrWi_fvSk360xdsOo3QqwMPyPw&usqp=CAU',
+                title: 'Air Pods Pro',
+                price: 60,
+            },
+            {
+                id: 2,
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTze4_ucpHCZFlb_Q6ALELYEDgY0_haCMWVmHIpqC3Fm7YQguXmBD93PVZeZBP4T2ABb_0&usqp=CAU',
+                title: '250D DSLR Camera',
+                price: 230,
+            },
+            {
+                id: 3,
+                image: 'data:image/jpeg;base64,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',
+                title: 'Headphones',
+                price: 100,
+            },
+            {
+                id: 4,
+                image: 'https://cdn.shopaccino.com/johns-music/products/r10s-174020_m.jpg?v=461',
+                title: 'Audio Microphone',
+                price: 230,
+            },
+            {
+                id: 5,
+                image:  'https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=75,format=auto/in-resources/7f703506-689d-4b4e-b482-c32d60769d33/Images/ProductImages/Source/conekt-smartwatch-full-hd-dispaly.jpg',
+                title: 'Smart Watch',
+                price: 100,
+            },
+        ];
+
+        const categories = [...new Set(product.map((item) => { return item }))]
+
+        document.getElementById('searchBar').addEventListener('keyup', (e) => {
+            const searchData = e.target.value.toLowerCase();
+            const filteredData = categories.filter((item) => {
+                return (
+                    item.title.toLowerCase().includes(searchData)
+                )
+            })
+            displayItem(filteredData)
+        });
+
+        const displayItem = (items) => {
+            document.getElementById('root').innerHTML = items.map((item) => {
+                var { image, title, price } = item;
+                return (
+                    `<div class='box'>
+                        <div class='img-box'>
+                            <img class='images' src=${image}></img>
+                        </div> 
+                        <div class='bottom'>
+                            <p>${title}</p>
+                            <h2>$ ${price}.00</h2>
+                        <button>Add to cart</button>
+                        </div>
+                    </div>`
+                )
+            }).join('')
+        };
+        displayItem(categories);
+
+    </script>
+</body>
+
+</html>nt.getElementById('searchBar').addEventListener('keyup', (e) => {
+            const searchData = e.target.value.toLowerCase();
+            const filteredData = categories.filter((item) => {
+                return (
+                    item.title.toLowerCase().includes(searchData)
+                )
+            })
+            displayItem(filteredData)
+        });
+
+        const displayItem = (items) => {
+            document.getElementById('root').innerHTML = items.map((item) => {
+                var { image, title, price } = item;
+                return (
+                    `<div class='box'>
+                        <div class='img-box'>
+                            <img class='images' src=${image}></img>
+                        </div> 
+                        <div class='bottom'>
+                            <p>${title}</p>
+                            <h2>$ ${price}.00</h2>
+                        <button>Add to cart</button>
+                        </div>
+                    </div>`
+                )
+            }).join('')
+        };
+        displayItem(categories);
+
+    </script>
+</body>
+
+</html>
